@@ -7,7 +7,6 @@ Author URI: https://domisiding.de
 Description: Man kann nun, ganz einfach seinen Fahrzeugbestand von Mobile.de mit einem Framework auf seiner Webseite anzeigen lassen.
 Version: 1.5
 Text Domain: mobileframe
-Domain Path: /languages
 License: GNU General Public License v2
 */
 
@@ -19,12 +18,12 @@ if ( ! defined( 'WPINC' ) ) {
 add_action( 'wp_enqueue_scripts', 'mobileframe_register_plugin_styles' );
 add_shortcode('mobileframe', 'mobileframe_start');
 add_action('admin_menu', 'mobileframe_create_adminmenu');
-add_action('mobileframe_translation', 'load_textdomain');
+add_action('mobileframe_translation', 'mobileframe_load_plugin_textdomain');
 ///////////////////////// Translation ///////////////////////
 $plugin_header_translate = array( __('Mobilede Framework', 'mobileframe'), __('Man kann nun, ganz einfach seinen Fahrzeugbestand von Mobile.de mit einem Framework auf seiner Webseite anzeigen lassen.', 'mobileframe') );
 
-function load_textdomain() {
-	load_plugin_textdomain( 'mobileframe', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+function mobileframe_load_plugin_textdomain() {
+   load_plugin_textdomain( 'mobileframe', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 ///////////////////////// Menü //////////////////////////
 function mobileframe_create_adminmenu() {
